@@ -1,3 +1,12 @@
-import {server} from './server/server'
+import { server } from './server/server';
+import * as dotenv from 'dotenv';
 
-server.listen(3333, () => console.log('APP loading...'))
+dotenv.config();
+
+if(!process.env.PORT) {
+  process.exit(1);
+}
+
+const PORT: number = parseInt(process.env.PORT as string, 10);
+
+server.listen(PORT, () => console.log(`API loading on PORT ${ PORT }`));
