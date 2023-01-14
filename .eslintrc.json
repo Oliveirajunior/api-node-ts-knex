@@ -38,5 +38,12 @@
             "error",
             "always"
         ]
+        
+        /* "@typescript-eslint/ban-types": [
+            "error",
+            {
+                "{}": false
+            }
+        ] */
     }
 }
