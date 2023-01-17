@@ -15,12 +15,12 @@ const queryValidationSchema: yup.SchemaOf<IQueryProps> = yup.object().shape({
   filter: yup.string().notRequired()
 });
 
-const createValidation = validation((getSchema) => ({
+const getAllValidation = validation((getSchema) => ({
   query: getSchema(queryValidationSchema)
 }));
 
 const getAll = async (req: Request<object, object, object, IQueryProps>, res: Response) => {
-  return res.status(StatusCodes.ACCEPTED).json(req.query);
+  return res.status(StatusCodes.OK).json(req.query);
 };
 
-export { getAll, createValidation };
+export { getAll, getAllValidation };
