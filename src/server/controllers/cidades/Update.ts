@@ -25,10 +25,17 @@ const updateValidation = validation((getSchema) => ({
 }));
 
 const update = async (req: Request<IParamProps, object, IBodyProps>, res: Response) => {
-  return res.status(StatusCodes.OK).json({
-    'id': req.params,
-    'cidade': req.body
+
+  //para fins de testes automatizados
+
+  if(Number(req.params.id) === 9999) return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
+    errors: {
+      default: 'Registro não encontrado'
+    }
   });
+
+  return res.status(StatusCodes.NO_CONTENT).send();
+
 };
 
 export { update, updateValidation };

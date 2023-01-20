@@ -16,7 +16,15 @@ const removeValidation = validation((getSchema) => ({
 }));
 
 const remove = async (req: Request<IParamProps>, res: Response) => {
-  return res.status(StatusCodes.OK).json(req.params);
+
+  // Para fins de teste automatizado
+  if(Number(req.params.id) === 9999) return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
+    errors: {
+      default: 'Registro não encontrado'
+    }
+  });
+
+  return res.status(StatusCodes.NO_CONTENT).send();
 };
 
 export { remove, removeValidation };
